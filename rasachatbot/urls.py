@@ -13,15 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from moodbot.views import moodbot
 from chatbot import views
 import chatbot
 from django.contrib import admin
 from django.urls import path, include
-from chatbot import views
+from chatbot import views as vc
 from chatbot import urls
+from moodbot import views as vm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('chatroom/', include(chatbot.urls)),
+    # path('moodbot/', include(moodbot.urls)),
+    path('moodbot/', vm.moodbot, name='moodbot'),
 ]
